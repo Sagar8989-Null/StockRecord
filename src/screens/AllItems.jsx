@@ -12,7 +12,7 @@ const AllItems = ({ data }) => {
                 data={data}
                 keyExtractor={(item) => item.id}
                 renderItem={({item})=>(
-                    <View style={[styles.itemContainer,{backgroundColor:item.stock<20 ? "#FFCCCC" : "#D7F6BF"}]}> 
+                    <View style={[styles.itemContainer,{backgroundColor:item.stock <= item.minstock ? "#FFCCCC" : "#D7F6BF"}]}> 
                         <Text style={styles.itemText}>{item.name}</Text>
                         <Text style={styles.itemText}>{item.stock}</Text>
                     </View>

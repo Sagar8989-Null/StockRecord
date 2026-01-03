@@ -5,6 +5,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import AllItems from './AllItems'
 import Create from './Create'
+import ManageStock from './ManageStock'
+// import StockAnalysis from './StockAnalysis'
 
 const STORAGE_KEY = '@stock_data';
 
@@ -53,10 +55,17 @@ const HomeScreen = () => {
                 <Pressable style={[styles.button, view === 2 ? { backgroundColor: '#72C37AFF' } : null]} onPress={() => setview(2)}>
                     <Text style={[styles.btntext, view === 2 ? { color: '#ffffffff' } : null]}>Create</Text>
                 </Pressable>
+                <Pressable style={[styles.button, view === 3 ? { backgroundColor: '#72C37AFF' } : null]} onPress={() => setview(3)}>
+                    <Text style={[styles.btntext, view === 3 ? { color: '#ffffffff' } : null]}>Manage</Text>
+                </Pressable>
+                {/* <Pressable onPress={() => setview(4)}><Text>Analysis</Text></Pressable> */}
+
             </View>
             {view === 0 && <AllItems data={data} />}
-            {view === 1 && <AllItems data={data.filter((item) => item.stock < 20)} />}
+            {view === 1 && <AllItems data={data.filter((item) => item.stock <= item.minstock)} />}
             {view === 2 && <Create data={data} setdata={setdata} />}
+            {view === 3 && <ManageStock data={data} setdata={setdata} />}
+            {/* {view === 4 && <StockAnalysis data={data} />} */}
         </SafeAreaView>
     )
 }
@@ -86,7 +95,7 @@ const styles = StyleSheet.create({
 
     button: {
         marginBottom: 10,
-        padding: '2%',
+        padding: '3%',
         borderRadius: 20,
         borderWidth: 1,
         borderColor: '#72C37AFF'
