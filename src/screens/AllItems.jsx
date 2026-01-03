@@ -9,16 +9,17 @@ const AllItems = ({ data }) => {
                 <Text style={styles.headingText}>Quantity</Text>
             </View>
             <FlatList
+                showsVerticalScrollIndicator={false}
                 data={data}
                 keyExtractor={(item) => item.id}
-                renderItem={({item})=>(
-                    <View style={[styles.itemContainer,{backgroundColor:item.stock <= item.minstock ? "#FFCCCC" : "#D7F6BF"}]}> 
+                renderItem={({ item }) => (
+                    <View style={[styles.itemContainer, { backgroundColor: item.stock <= item.minstock ? "#FFCCCC" : "#D7F6BF" }]}>
                         <Text style={styles.itemText}>{item.name}</Text>
                         <Text style={styles.itemText}>{item.stock}</Text>
                     </View>
                 )}
 
-                contentContainerStyle={{gap:10}}
+                contentContainerStyle={{ gap: 10 }}
             />
         </View>
     )
@@ -37,12 +38,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
 
-    itemContainer:{
+    itemContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 10,
         paddingVertical: 10,
-        borderRadius:7,
+        borderRadius: 7,
     },
 
     itemText: {

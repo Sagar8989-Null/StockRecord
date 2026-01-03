@@ -138,6 +138,7 @@ const Create = ({ data, setdata }) => {
                     <Text style={styles.headingText}>All Items in the Stock</Text>
                 </View>
                 <FlatList
+                    showsVerticalScrollIndicator={false}
                     data={data}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({ item }) => (

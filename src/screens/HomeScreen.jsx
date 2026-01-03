@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import AllItems from './AllItems'
 import Create from './Create'
 import ManageStock from './ManageStock'
-// import StockAnalysis from './StockAnalysis'
+import StockAnalysis from './StockAnalysis'
 
 const STORAGE_KEY = '@stock_data';
 
@@ -58,14 +58,17 @@ const HomeScreen = () => {
                 <Pressable style={[styles.button, view === 3 ? { backgroundColor: '#72C37AFF' } : null]} onPress={() => setview(3)}>
                     <Text style={[styles.btntext, view === 3 ? { color: '#ffffffff' } : null]}>Manage</Text>
                 </Pressable>
-                {/* <Pressable onPress={() => setview(4)}><Text>Analysis</Text></Pressable> */}
+                <Pressable style={[styles.button, view === 4 ? { backgroundColor: '#72C37AFF' } : null]} onPress={() => setview(4)}>
+                    <Text style={[styles.btntext, view === 4 ? { color: '#ffffffff' } : null]} >Analysis</Text>
+                </Pressable>
 
             </View>
+
             {view === 0 && <AllItems data={data} />}
             {view === 1 && <AllItems data={data.filter((item) => item.stock <= item.minstock)} />}
             {view === 2 && <Create data={data} setdata={setdata} />}
             {view === 3 && <ManageStock data={data} setdata={setdata} />}
-            {/* {view === 4 && <StockAnalysis data={data} />} */}
+            {view === 4 && <StockAnalysis data={data} />}
         </SafeAreaView>
     )
 }

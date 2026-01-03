@@ -22,6 +22,7 @@ const ManageStock = ({ data, setdata }) => {
       <Text style={styles.title}>Manage Stock</Text>
 
       <FlatList
+        showsVerticalScrollIndicator={false}
         data={data}
         keyExtractor={item => item.id.toString()}
         renderItem={({ item }) => (
@@ -32,7 +33,7 @@ const ManageStock = ({ data, setdata }) => {
             ]}
           >
             <Text style={styles.itemheading}>{item.name}</Text>
-            <View style={{ flexDirection: 'row', justifyContent:'space-between' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
               <Text style={styles.text}>Sold: {item.sold}</Text>
               <Text style={styles.text}>Stock: {item.stock}</Text>
             </View>
@@ -72,10 +73,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#EAF7EA',
     borderRadius: 8
   },
-  itemheading:{
-    fontSize:18,
-    fontWeight:600,
-    paddingBottom:5,
+  itemheading: {
+    fontSize: 18,
+    fontWeight: 600,
+    paddingBottom: 5,
   },
   lowStock: {
     backgroundColor: '#FFD6D6'
@@ -96,6 +97,6 @@ const styles = StyleSheet.create({
   },
   btnText: {
     color: '#fff',
-    fontWeight: 'bold'
+    fontWeight: '500'
   }
 });
